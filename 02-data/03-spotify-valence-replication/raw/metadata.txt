@@ -1,0 +1,81 @@
+# Metadata for Spotify Dataset (1921–2020)
+
+## Data Source
+
+- **Dataset Title**: Spotify Dataset 1921–2020, 160k+ Tracks  
+- **Curator**: Yamaç Eren Ay  
+- **URL**: https://www.kaggle.com/datasets/yamaerenay/spotify-dataset-1921-2020-160k-tracks  
+- **Original Source**: Spotify Web API  
+- **Release Date**: April 2021  
+- **Observations**: 167,895 tracks  
+- **Scope**: Tracks released between 1921 and 2020, across multiple genres and eras  
+
+---
+
+## Purpose of Dataset
+
+This dataset is used for analyzing emotional qualities in music through the `valence` score and associated audio features. Our replication focuses on regression modeling and clustering based on these characteristics to replicate and extend the work in Dutta & Mookherjee (2023).
+
+---
+
+## Fields and Descriptions
+
+### 1. valence (float)
+- Range: 0.0 to 1.0
+- Description: Musical positivity conveyed by a track. Higher = happier, lower = sad/angry.
+
+### 2. acousticness (float)
+- Description: Confidence measure (0.0–1.0) that the track is acoustic.
+
+### 3. danceability (float)
+- Description: How suitable the track is for dancing (rhythm, beat strength, tempo).
+
+### 4. energy (float)
+- Description: Intensity and activity of the track (0.0–1.0 scale).
+
+### 5. instrumentalness (float)
+- Description: Likelihood that the track has no vocals (1.0 = highly instrumental).
+
+### 6. key (integer)
+- Description: Estimated key of the track using pitch class notation (0=C, 1=C#, ..., 11=B).
+
+### 7. liveness (float)
+- Description: Presence of an audience in the recording. Higher = more likely live performance.
+
+### 8. loudness (float)
+- Unit: dB (decibels)
+- Description: Overall track loudness. Typically between -60 and 0 dB.
+
+### 9. mode (integer: 0 or 1)
+- Description: Modality of the track (0 = minor, 1 = major).
+
+### 10. speechiness (float)
+- Description: Presence of spoken words (e.g., rap, poetry).
+
+### 11. tempo (float)
+- Unit: BPM (beats per minute)
+- Description: Estimated tempo of the track.
+
+### 12. year (integer)
+- Description: Year of release (used for trend analysis and clustering).
+
+---
+
+## Dropped / Ignored Columns
+- **track.id, name, artist, popularity, explicit**: Metadata not used in modeling or analysis.
+- **release_date**: Redundant with `year`.
+- **duration_ms**: Not used in this study.
+
+---
+
+## Preprocessing Notes
+- Removed duplicate rows and rows with missing values in modeling features.
+- Converted `year` to numeric for plotting and regression.
+- Converted `mode` and `key` to factor where appropriate.
+- Sampled 15,000 observations for analysis to reduce memory load while preserving trends.
+
+---
+
+## License
+Please refer to Kaggle’s dataset usage terms and Spotify API Terms of Service.
+
