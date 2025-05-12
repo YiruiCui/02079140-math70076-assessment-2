@@ -1,0 +1,42 @@
+# Metadata for COVID-19 Excess Mortality in Germany (Replication Study)
+
+## Data Sources
+
+### 1. **2025-04-16-release-world-mortality.csv**
+- Source: World Mortality Dataset  
+- URL: https://github.com/akarlinsky/world_mortality
+- Description: Weekly all-cause mortality counts by country (2015–2024).
+- Note: This study filters only "Germany" and rows with `time_unit == "weekly"`.
+
+### 2. **2024-08-19-release-owid-covid-data.csv**
+- Source: Our World in Data (OWID)
+- URL: https://ourworldindata.org/coronavirus (https://github.com/owid/covid-19-data/tree/master/public/data)
+- Description: Daily global COVID-19 data including cases, deaths, vaccinations, testing, and population.
+- Note: This study uses only German data and aggregates `new_deaths` weekly.
+
+---
+
+## Derived Datasets
+
+### 1. **2025-04-16-release-world-mortality-cleaned.csv**
+- Description: Weekly all-cause deaths for all countries (2015–2024), cleaned and filtered from the original WMD dataset.
+- Fields:
+  - `country_name` (text): Country name
+  - `year` (numeric): Year
+  - `time` (numeric): ISO week number
+  - `deaths` (numeric): Number of observed deaths
+
+### 2. **2024-08-19-release-owid-covid-data-cleaned.csv**
+- Description: Daily global COVID-19 deaths.
+- Fields:
+  - `location` (text): Country name
+  - `date` (text): Date
+  - `year`, `time` (numeric): Aggregated from date
+  - `new_deaths` (numeric): Daily reported COVID-19 deaths
+
+---
+
+## Notes for Cleaned/Derived Data
+- Weekly time alignment was applied across both datasets using ISO week definitions.
+- All missing values in death counts were removed or filled as zero where appropriate (e.g., OWID COVID data).
+
